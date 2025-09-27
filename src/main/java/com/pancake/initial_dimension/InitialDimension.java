@@ -29,19 +29,22 @@ public class InitialDimension {
         private static final ForgeConfigSpec SPEC;
         private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
         public static final ForgeConfigSpec.ConfigValue<String> INITIAL_DIMENSION;
-        public final ForgeConfigSpec.BooleanValue isRespawnOn;
+        public static final ForgeConfigSpec.BooleanValue isRespawnOn;
         static {
             BUILDER.push("Spawn Settings");
             INITIAL_DIMENSION = BUILDER
-                    .comment("The initial dimension that players will spawn in")
-                    .define("InitialDimension", "minecraft:overworld");
+                .comment("The initial dimension that players will spawn in")
+                .define("InitialDimension", "minecraft:overworld");
             BUILDER.pop();
-            SPEC = BUILDER.build();
+
             BUILDER.push("RespawnTP");
-            isRespawnOn=BUILDER
-                    .comment("Whether to enable random respawning, if false," +
-                            " player may get stuck in walls in certain dimensions like nether;else: saved respawn point will not work.")
-                    .define("isRespawnOn", true);
+            isRespawnOn = BUILDER
+                .comment("Whether to enable random respawning, if false," +
+                    " player may get stuck in walls in certain dimensions like nether; else: saved respawn point will not work.")
+                .define("isRespawnOn", true);
+            BUILDER.pop();
+
+            SPEC = BUILDER.build();
         }
 
 
